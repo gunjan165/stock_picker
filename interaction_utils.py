@@ -1,11 +1,11 @@
 from utils import get_stock_name_suggestion, get_date
-
+import sys
 
 def get_stock_name(all_stock_data):
 
     while True:
         print("Which stock do you want to process?")
-        input_stock_name = raw_input()
+        input_stock_name = get_user_input()
 
         if input_stock_name in all_stock_data:
             return input_stock_name
@@ -14,7 +14,7 @@ def get_stock_name(all_stock_data):
 
             for suggestion in suggestions:
                 print("Did you mean: " + suggestion, " y or n ")
-                choice = raw_input()
+                choice = get_user_input()
 
                 if choice == "y":
                     return suggestion
@@ -37,7 +37,7 @@ def get_period():
 
 def get_date_input():
     try:
-        return get_date(raw_input())
+        return get_date(get_user_input())
 
     except Exception as e:
         if "range" in e.message:
@@ -61,3 +61,16 @@ def output_result(stock_name, mean, deviation, purchase_result):
 
     print ("Profit assuming 100 shares are bought : " + str(purchase_result.profit * 100) + "\n")
 
+def exit_program():
+    print("Exiting ...")
+    sys.exit()
+
+def get_user_input():
+
+    user_input = raw_input()
+
+    if user_input.lower() == "exit":
+        exit_program()
+    else:
+        return user_input
+    

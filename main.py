@@ -6,6 +6,7 @@ import sys
 
 print("Welcome Agent!")
 print("Please wait parsing csv ... ")
+print("Enter exit at any point to close the program!")
 
 data = parse_file(sys.argv[1])
 
