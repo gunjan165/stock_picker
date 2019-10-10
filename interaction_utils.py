@@ -76,4 +76,11 @@ def get_user_input():
         exit_program()
     else:
         return user_input
-    
+
+def validate_stock_data(stock_prices):
+
+    if not stock_prices:
+        print("There is no data for the stock in the given time period.\n Please select a different stock or time period.")
+        return False 
+
+    return True

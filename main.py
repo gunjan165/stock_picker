@@ -1,6 +1,6 @@
 from csv_parser import parse_file
 from utils import *
-from interaction_utils import get_stock_name, get_period, output_result
+from interaction_utils import get_stock_name, get_period, output_result, validate_stock_data
 import sys
 
 
@@ -21,11 +21,13 @@ while True:
         from_date=from_date,
         to_date=to_date
     )
-    mean = get_stock_mean_value_in_period(stock_prices)
-    deviation = get_stock_standard_deviation_in_period(stock_prices)
-    purchase_result = get_stock_purchase_sell_dates(stock_prices)
 
-    output_result(stock_name, mean, deviation, purchase_result)
+    if validate_stock_data(stock_prices):
+        mean = get_stock_mean_value_in_period(stock_prices)
+        deviation = get_stock_standard_deviation_in_period(stock_prices)
+        purchase_result = get_stock_purchase_sell_dates(stock_prices)
+
+        output_result(stock_name, mean, deviation, purchase_result)
 
 
 
