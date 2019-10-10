@@ -54,12 +54,15 @@ def output_result(stock_name, mean, deviation, purchase_result):
     print("Mean value : " + str(mean))
 
     print("Standard deviation : " + str(deviation))
+    
+    if(purchase_result.profit > 0):
+        print("To maximize profit, "
+            "\n\t Buy on : " + purchase_result.buyDate.strftime("%d-%m-%Y") + " at : " + str(purchase_result.buyPrice) +
+            "\n\t Sell on: " + purchase_result.sellDate.strftime("%d-%m-%Y")) + " at : " + str(purchase_result.sellPrice)
 
-    print("To maximize profit, "
-          "\n\t Buy on : " + purchase_result.buyDate.strftime("%d-%m-%Y") + " at : " + str(purchase_result.buyPrice) +
-          "\n\t Sell on: " + purchase_result.sellDate.strftime("%d-%m-%Y")) + " at : " + str(purchase_result.sellPrice)
-
-    print ("Profit assuming 100 shares are bought : " + str(purchase_result.profit * 100) + "\n")
+        print ("Profit assuming 100 shares are bought : " + str(purchase_result.profit * 100) + "\n")
+    else:
+        print("Do not buy! \nIts impossible to profit while trading in the given time period!")
 
 def exit_program():
     print("Exiting ...")
